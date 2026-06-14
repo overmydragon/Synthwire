@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif, Fraunces } from 'next/font/google'
 import './globals.css';
 import { Navigation } from '@/components/landing/Navigation';
 import { Footer } from '@/components/landing/Footer';
+import { Analytics } from '@vercel/analytics/next';
 import { ThemeProvider } from '@/lib/theme';
 
 const geistSans = Geist({
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="flex-1 pt-16">{children}</main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
