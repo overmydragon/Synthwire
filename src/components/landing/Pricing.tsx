@@ -77,7 +77,7 @@ export function Pricing() {
                 <div
                   className={`group relative p-5 sm:p-6 md:p-8 lg:p-10 border-b md:border-b-0 border-white/[0.06] ${
                     i < tierOrder.length - 1 ? 'md:border-r' : ''
-                  } ${isPopular ? 'bg-white/[0.02]' : ''} hover:bg-white/[0.03] transition-colors flex flex-col`}
+                  } ${isPopular ? 'bg-white/[0.02]' : ''} hover:bg-white/[0.03] transition-colors flex flex-col h-full`}
                 >
                   {/* Invisible "Popular" spacer reserves badge space in all 3 cards so tops align on mobile */}
                   <span
@@ -90,26 +90,17 @@ export function Pricing() {
 
                   <p className="text-[11px] font-mono uppercase tracking-wider text-ink-500 mb-2">{String(i + 1).padStart(2, '0')}</p>
                   <h3 className="text-2xl font-medium text-white mb-1">{features.name}</h3>
-                  <p className="text-[13px] text-ink-400 mb-1">{tierCopy[tier].tagline}</p>
-                  <p className="text-[12px] text-ink-500 mb-8">{tierCopy[tier].ideal}</p>
+                  <div className="min-h-[40px] mb-6">
+                    <p className="text-[13px] text-ink-400">{tierCopy[tier].tagline}</p>
+                    <p className="text-[12px] text-ink-500">{tierCopy[tier].ideal}</p>
+                  </div>
 
-                  <div className="mb-8">
+                  <div className="mb-6">
                     <span className="text-display text-5xl text-white">${price}</span>
                     <span className="text-[14px] text-ink-400 ml-2">/{billingCycle === 'monthly' ? 'mo' : 'yr'}</span>
                   </div>
 
-                  <Link
-                    href="/app"
-                    className={`block w-full text-center py-2.5 rounded-full text-[13px] font-medium transition-colors ${
-                      isPopular
-                        ? 'bg-white text-ink-950 hover:bg-ink-100'
-                        : 'border border-white/[0.12] text-white hover:bg-white/[0.05]'
-                    }`}
-                  >
-                    {price === 0 ? 'Start free' : `Get ${features.name}`}
-                  </Link>
-
-                  <ul className="mt-8 space-y-3 flex-1">
+                  <ul className="space-y-3 flex-1">
                     <FeatureItem>{features.sources_limit === 'unlimited' ? 'Unlimited sources' : `${features.sources_limit} sources`}</FeatureItem>
                     <FeatureItem>{features.archive_days}-day archive</FeatureItem>
                     <FeatureItem>Email delivery</FeatureItem>
@@ -121,6 +112,17 @@ export function Pricing() {
                     {features.discovery_requests && <FeatureItem>On-demand source requests</FeatureItem>}
                     {features.team_workspaces && <FeatureItem>Team workspaces ({features.max_team_members} members)</FeatureItem>}
                   </ul>
+
+                  <Link
+                    href="/app"
+                    className={`block w-full text-center py-2.5 rounded-full text-[13px] font-medium transition-colors ${
+                      isPopular
+                        ? 'bg-white text-ink-950 hover:bg-ink-100'
+                        : 'border border-white/[0.12] text-white hover:bg-white/[0.05]'
+                    }`}
+                  >
+                    {price === 0 ? 'Start free' : `Get ${features.name}`}
+                  </Link>
                 </div>
               </RevealOnScroll>
             );

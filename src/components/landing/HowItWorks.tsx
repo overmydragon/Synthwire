@@ -36,7 +36,7 @@ export function HowItWorks() {
           <div className="mb-6">
             <SectionMarker num="1.2" eyebrow="How it works" />
           </div>
-          <h2 className="text-display text-[clamp(32px,8vw,80px)] text-white mb-6 mt-6">
+          <h2 className="text-display text-[clamp(32px,8vw,80px)] text-white mb-6 mt-6 text-balance">
             Three steps. <em className="text-ink-400 not-italic">No magic.</em>
           </h2>
           <p className="text-lg text-ink-300 leading-relaxed max-w-xl">
@@ -44,10 +44,10 @@ export function HowItWorks() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 items-stretch">
           {steps.map((step, i) => (
             <RevealOnScroll key={step.number} delay={i * 100}>
-              <div className="group">
+              <div className="group h-full flex flex-col">
                 <div className="flex items-center gap-4 mb-6">
                   <span className="text-[14px] font-mono text-ink-500">{step.number}</span>
                   <div className="w-12 h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center group-hover:bg-white/[0.06] group-hover:border-white/[0.15] transition-colors">
@@ -61,7 +61,7 @@ export function HowItWorks() {
                   {step.headline}
                 </h3>
 
-                <p className="text-[15px] text-ink-300 leading-relaxed">
+                <p className="text-[15px] text-ink-300 leading-relaxed flex-1 line-clamp-3">
                   {step.description}
                 </p>
               </div>

@@ -26,10 +26,10 @@ export function Comparison() {
               <div className="mb-6">
                 <SectionMarker num="1.4" eyebrow="Why us" />
               </div>
-              <h2 className="text-display text-[clamp(40px,6vw,80px)] text-white mt-6">
-                The other <em className="text-ink-400 not-italic">newsletter tools,</em>
+              <h2 className="text-display text-[clamp(40px,6vw,80px)] text-white mt-6 text-balance">
+                The other <em className="text-ink-400 not-italic">newsletter</em>
                 <br />
-                then us.
+                tools, then us.
               </h2>
             </div>
             <div className="md:col-span-5 flex md:items-end">

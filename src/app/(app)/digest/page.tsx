@@ -195,7 +195,7 @@ function DigestSectionCard({ section, mode, isExpanded, onToggle }: {
       {isExpanded && (
         <div className="space-y-3 animate-slide-down">
           {section.items.map((item, index) => (
-            <DigestItemCard key={item.link_ref} item={item} index={index} mode={mode} />
+            <DigestItemCard key={item.link_ref} item={item} mode={mode} />
           ))}
         </div>
       )}

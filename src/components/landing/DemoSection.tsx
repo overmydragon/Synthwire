@@ -104,14 +104,13 @@ export function DemoSection() {
               </div>
               <h2
                 id="demo-heading"
-                className="text-display text-white text-[clamp(40px,5.5vw,72px)] leading-[1.02] tracking-[-0.035em]"
+                className="text-display text-white text-[clamp(40px,5.5vw,72px)] leading-[1.02] tracking-[-0.035em] text-balance"
               >
                 <span className="block">
                   Seven newsletters{' '}
-                  <em className="not-italic text-ink-400">cover</em>
-                </span>
-                <span className="block">
-                  <em className="not-italic text-ink-400">the</em> same
+                  <em className="not-italic text-ink-400">cover</em>{' '}
+                  <em className="not-italic text-ink-400">the</em>{' '}
+                  same
                 </span>
                 <span className="block">
                   <em className="italic text-ink-200">story.</em>

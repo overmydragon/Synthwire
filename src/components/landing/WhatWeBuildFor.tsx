@@ -29,7 +29,7 @@ export function WhatWeBuildFor() {
           <div className="mb-6">
             <SectionMarker num="1.5" eyebrow="What we build for" />
           </div>
-          <h2 className="text-display text-[clamp(40px,6vw,80px)] text-white mb-6 mt-6">
+          <h2 className="text-display text-[clamp(40px,6vw,80px)] text-white mb-6 mt-6 text-balance">
             We like sources that have:
           </h2>
           <p className="text-lg text-ink-300 max-w-2xl">
@@ -60,7 +60,7 @@ export function WhatWeBuildFor() {
 
         {/* We avoid */}
         <div className="mt-16">
-          <h3 className="text-display text-3xl text-white mb-8 mt-6">
+          <h3 className="text-display text-3xl text-white mb-8 mt-6 text-balance">
             We avoid sources that are:
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

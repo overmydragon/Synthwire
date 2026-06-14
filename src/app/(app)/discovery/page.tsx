@@ -19,11 +19,56 @@ import { MOCK_RECOMMENDATIONS, MOCK_SOURCES, MOCK_EXPLANATION } from '@/lib/data
 import type { SourceRecommendation, SubscriptionQueueItem, Source, ExplainRecommendationOutput } from '@/lib/types';
 
 const mockQueueItems: SubscriptionQueueItem[] = [
-  { ...MOCK_RECOMMENDATIONS[0], source_id: 'src_import_ai', status: 'active', added_at: '2026-01-15', route: 'digest', priority: 1, digest_mode: 'executive_brief' },
-  { ...MOCK_RECOMMENDATIONS[1], source_id: 'src_semiconductor_daily', status: 'pending', added_at: '2026-06-10', route: 'digest', priority: 2, digest_mode: '3_sentence' },
-  { ...MOCK_RECOMMENDATIONS[2], source_id: 'src_china_ai', status: 'active', added_at: '2026-03-22', route: 'digest', priority: 3, digest_mode: 'executive_brief' },
-  { ...MOCK_RECOMMENDATIONS[3], source_id: 'src_crypto_policy', status: 'paused', added_at: '2026-05-01', route: 'team_queue', priority: 4, digest_mode: 'none' },
+  { ...MOCK_RECOMMENDATIONS[0], source_id: 'src_import_ai', status: 'active', added_at: '2026-01-15', route: 'digest', priority: 1, digest_mode: 'executive_brief', topic_matches: ['AI models', 'frontier research'] },
+  { ...MOCK_RECOMMENDATIONS[1], source_id: 'src_semiconductor_daily', status: 'pending', added_at: '2026-06-10', route: 'digest', priority: 2, digest_mode: '3_sentence', topic_matches: ['chip manufacturing'] },
+  { ...MOCK_RECOMMENDATIONS[2], source_id: 'src_china_ai', status: 'active', added_at: '2026-03-22', route: 'digest', priority: 3, digest_mode: 'executive_brief', topic_matches: ['AI models', 'geo-policy'] },
+  { ...MOCK_RECOMMENDATIONS[3], source_id: 'src_crypto_policy', status: 'paused', added_at: '2026-05-01', route: 'team_queue', priority: 4, digest_mode: 'none', topic_matches: ['crypto policy'] },
 ];
+
+const getStatusBadge = (status: SubscriptionQueueItem['status']) => {
+  switch (status) {
+    case 'active': return <Badge variant="success" size="sm" dot>Active</Badge>;
+    case 'pending': return <Badge variant="info" size="sm" dot>Pending</Badge>;
+    case 'paused': return <Badge variant="warning" size="sm" dot>Paused</Badge>;
+    case 'muted': return <Badge variant="default" size="sm" dot>Muted</Badge>;
+    case 'removed': return <Badge variant="danger" size="sm" dot>Removed</Badge>;
+  }
+};
+
+const getStatusActions = (item: SubscriptionQueueItem) => {
+  switch (item.status) {
+    case 'pending':
+      return (
+        <div className="flex items-center gap-2">
+          <Button size="sm" variant="success" onClick={() => console.log('Approve', item.source_id)}>
+            <CheckIcon className="w-4 h-4" /> Approve
+          </Button>
+          <Button size="sm" variant="ghost" onClick={() => console.log('Reject', item.source_id)}>
+            <XMarkIcon className="w-4 h-4" /> Reject
+          </Button>
+        </div>
+      );
+    case 'active':
+      return (
+        <div className="flex items-center gap-2">
+          <Button size="sm" variant="ghost" onClick={() => console.log('Pause', item.source_id)}>
+            <PauseIcon className="w-4 h-4" /> Pause
+          </Button>
+          <Button size="sm" variant="ghost" onClick={() => console.log('View', item.source_id)}>
+            <EyeIcon className="w-4 h-4" /> View
+          </Button>
+        </div>
+      );
+    case 'paused':
+      return (
+        <Button size="sm" variant="success" onClick={() => console.log('Resume', item.source_id)}>
+          <ArrowDownTrayIcon className="w-4 h-4" /> Resume
+        </Button>
+      );
+    default:
+      return <Button size="sm" variant="ghost" onClick={() => console.log('Re-add', item.source_id)}>Re-add</Button>;
+  }
+};
 
 export default function DiscoveryQueue() {
   const [activeTab, setActiveTab] = useState<'recommendations' | 'queue'>('recommendations');
@@ -43,51 +88,6 @@ export default function DiscoveryQueue() {
       setSelectedSource(source);
       setExplanation(MOCK_EXPLANATION);
       setDrawerOpen(true);
-    }
-  };
-
-  const getStatusBadge = (status: SubscriptionQueueItem['status']) => {
-    switch (status) {
-      case 'active': return <Badge variant="success" size="sm" dot>Active</Badge>;
-      case 'pending': return <Badge variant="info" size="sm" dot>Pending</Badge>;
-      case 'paused': return <Badge variant="warning" size="sm" dot>Paused</Badge>;
-      case 'muted': return <Badge variant="default" size="sm" dot>Muted</Badge>;
-      case 'removed': return <Badge variant="danger" size="sm" dot>Removed</Badge>;
-    }
-  };
-
-  const getStatusActions = (item: SubscriptionQueueItem) => {
-    switch (item.status) {
-      case 'pending':
-        return (
-          <div className="flex items-center gap-2">
-            <Button size="sm" variant="success" onClick={() => console.log('Approve', item.source_id)}>
-              <CheckIcon className="w-4 h-4" /> Approve
-            </Button>
-            <Button size="sm" variant="ghost" onClick={() => console.log('Reject', item.source_id)}>
-              <XMarkIcon className="w-4 h-4" /> Reject
-            </Button>
-          </div>
-        );
-      case 'active':
-        return (
-          <div className="flex items-center gap-2">
-            <Button size="sm" variant="ghost" onClick={() => console.log('Pause', item.source_id)}>
-              <PauseIcon className="w-4 h-4" /> Pause
-            </Button>
-            <Button size="sm" variant="ghost" onClick={() => setDrawerOpen(true)}>
-              <EyeIcon className="w-4 h-4" /> View
-            </Button>
-          </div>
-        );
-      case 'paused':
-        return (
-          <Button size="sm" variant="success" onClick={() => console.log('Resume', item.source_id)}>
-            <ArrowDownTrayIcon className="w-4 h-4" /> Resume
-          </Button>
-        );
-      default:
-        return <Button size="sm" variant="ghost" onClick={() => console.log('Re-add', item.source_id)}>Re-add</Button>;
     }
   };
 
@@ -124,7 +124,7 @@ export default function DiscoveryQueue() {
           </div>
 
           <div className="w-full lg:w-auto -mx-4 sm:mx-0 px-4 sm:px-0 overflow-x-auto">
-            <Tabs defaultValue="recommendations" onChange={setActiveTab} className="w-full lg:w-auto">
+            <Tabs defaultValue="recommendations" onChange={(v) => setActiveTab(v as 'recommendations' | 'queue')} className="w-full lg:w-auto">
               <Tabs.List className="flex-nowrap whitespace-nowrap w-max lg:w-auto">
                 <Tabs.Trigger value="recommendations">
                   <span className="flex items-center gap-2">

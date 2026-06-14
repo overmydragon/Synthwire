@@ -80,7 +80,7 @@ export function Features() {
             <div className="mb-6">
               <SectionMarker num="1.7" eyebrow="Features" />
             </div>
-            <h2 className="text-display text-[clamp(40px,6vw,80px)] text-white mt-6">
+            <h2 className="text-display text-[clamp(40px,6vw,80px)] text-white mt-6 text-balance">
               You curate the sources. <em className="text-ink-400 not-italic">We do the work.</em>
             </h2>
           </div>

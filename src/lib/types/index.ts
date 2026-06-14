@@ -49,7 +49,7 @@ export interface Source {
   publisher: string;
   description: string;
   topics: string[];
-  frequency: 'daily' | 'weekly' | 'biweekly' | 'monthly';
+  frequency: 'daily' | 'weekly' | 'biweekly' | 'monthly' | 'quarterly';
   paywall_status: 'free' | 'freemium' | 'paid';
   reputation_score: number; // 0-1
   overlap_score: number; // 0-1, how much it overlaps with user's other sources
@@ -69,6 +69,7 @@ export interface SampleIssue {
   excerpt: string;
   topics: string[];
   word_count: number;
+  reading_time_minutes: number;
 }
 
 export interface SourceCatalog {
@@ -96,6 +97,10 @@ export interface SubscriptionQueueItem {
   route: SubscriptionRoute;
   priority: number;
   digest_mode: SummaryMode;
+  title: string;
+  description?: string;
+  publisher?: string;
+  topic_tags?: string[];
 }
 
 export interface ActiveSubscription {

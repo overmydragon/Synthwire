@@ -16,7 +16,7 @@ export function CTA() {
           <SectionMarker num="2.0" eyebrow="Get started" align="center" />
         </div>
 
-        <h2 className="text-display text-[clamp(40px,9vw,140px)] text-white mb-10 tracking-tighter text-balance">
+        <h2 className="text-display text-[clamp(40px,9vw,140px)] text-white mb-10 text-balance">
           Stop reading 47 newsletters.
           <span className="block">
             <em className="text-ink-400 not-italic">Read one brief.</em>

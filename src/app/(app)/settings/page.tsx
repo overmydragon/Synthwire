@@ -75,7 +75,7 @@ export default function Settings() {
 
       {/* Tabs — horizontal scroll on mobile */}
       <div className="-mx-4 sm:mx-0 px-4 sm:px-0 mb-6 overflow-x-auto">
-        <Tabs defaultValue={activeTab} onChange={setActiveTab}>
+        <Tabs defaultValue={activeTab} onChange={(v) => setActiveTab(v as typeof activeTab)}>
           <Tabs.List className="flex-nowrap whitespace-nowrap w-max sm:w-auto">
             <Tabs.Trigger value="profile">
               <UserCircleIcon className="w-4 h-4" /> Profile
@@ -279,8 +279,8 @@ export default function Settings() {
                   { key: 'smsAlerts', label: 'SMS alerts', description: 'Critical alerts via SMS (Max tier)', icon: PhoneIcon },
                 ].map(item => (
                   <NotificationToggle
-                    key={item.key}
                     {...item}
+                    key={item.key}
                     value={notifications[item.key as keyof typeof notifications]}
                     onChange={(val) => setNotifications(prev => ({ ...prev, [item.key]: val }))}
                     disabled={item.key === 'smsAlerts' && currentTier !== 'max'}
@@ -298,8 +298,8 @@ export default function Settings() {
                   { key: 'coverageGapAlerts', label: 'Coverage gap alerts', description: "Alert when you're missing key sources on a topic", icon: ShieldCheckIcon },
                 ].map(item => (
                   <NotificationToggle
-                    key={item.key}
                     {...item}
+                    key={item.key}
                     value={notifications[item.key as keyof typeof notifications]}
                     onChange={(val) => setNotifications(prev => ({ ...prev, [item.key]: val }))}
                   />
@@ -361,12 +361,12 @@ export default function Settings() {
             <Card variant="elevated" padding="md" className="p-5 sm:p-6 md:p-8">
               <h3 className="font-medium text-white mb-4 sm:mb-6">Connected accounts</h3>
               <div className="space-y-3 sm:space-y-4">
-                {[
-                  { name: 'Email (Relay)', status: 'connected', description: 'synthwire_abc123@relay.synthwire.email', icon: EnvelopeIcon },
-                  { name: 'Slack', status: 'connected', description: 'Connected to #research-digest', icon: ChatBubbleLeftRightIcon },
-                  { name: 'Discord', status: 'disconnected', description: 'Not connected', icon: ChatBubbleLeftRightIcon },
-                  { name: 'SMS', status: 'disconnected', description: 'Requires Max tier', icon: PhoneIcon, disabled: currentTier !== 'max' },
-                ].map(item => (
+                {([
+                  { name: 'Email (Relay)', status: 'connected' as const, description: 'synthwire_abc123@relay.synthwire.email', icon: EnvelopeIcon },
+                  { name: 'Slack', status: 'connected' as const, description: 'Connected to #research-digest', icon: ChatBubbleLeftRightIcon },
+                  { name: 'Discord', status: 'disconnected' as const, description: 'Not connected', icon: ChatBubbleLeftRightIcon },
+                  { name: 'SMS', status: 'disconnected' as const, description: 'Requires Max tier', icon: PhoneIcon, disabled: currentTier !== 'max' },
+                ] as const).map(item => (
                   <IntegrationRow key={item.name} {...item} />
                 ))}
               </div>

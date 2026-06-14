@@ -23,7 +23,7 @@ export function Hero() {
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,#0a090e_70%)]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-[var(--section-max-w)] mx-auto px-4 sm:px-6">
         {/* Section marker + eyebrow — Stripe Sessions style */}
         <div className="animate-slide-up mb-14" style={{ animationDelay: '60ms' }}>
           <SectionMarker num="1.0" eyebrow="The product" />
@@ -47,7 +47,7 @@ export function Hero() {
 
         {/* Massive display headline — Fraunces, genuinely huge */}
         <h1
-          className="text-center text-display text-white mb-6 sm:mb-12 animate-slide-up leading-[0.92] tracking-[-0.04em] text-balance break-words"
+          className="text-center text-display text-white mb-6 sm:mb-12 animate-slide-up leading-[0.92] text-balance"
           style={{
             animationDelay: '200ms',
             fontSize: 'clamp(40px, 11vw, 200px)',
@@ -56,13 +56,12 @@ export function Hero() {
           <span className="block">
             <em className="not-italic text-ink-500">Your</em>{' '}
             <span>own</span>{' '}
-            <em className="font-light text-ink-200">research</em>
+            <em className="font-light text-ink-200">research</em>{' '}
+            <span>desk,</span>
           </span>
           <span className="block">
-            <span>desk, not</span>{' '}
-            <em className="not-italic text-ink-500">another</em>
-          </span>
-          <span className="block">
+            <span>not</span>{' '}
+            <em className="not-italic text-ink-500">another</em>{' '}
             <em className="italic">aggregator.</em>
           </span>
         </h1>

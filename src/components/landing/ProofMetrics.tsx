@@ -12,7 +12,7 @@ export function ProofMetrics() {
           <div className="mb-6">
             <SectionMarker num="1.6" eyebrow="Proof, not promises" />
           </div>
-          <h2 className="text-display text-[clamp(36px,5vw,64px)] text-white mt-6">
+          <h2 className="text-display text-[clamp(36px,5vw,64px)] text-white mt-6 text-balance">
             The numbers that <em className="text-ink-400 not-italic">actually matter.</em>
           </h2>
         </div>

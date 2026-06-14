@@ -8,7 +8,7 @@ export function SourceMarquee() {
 
   return (
     <section id="s-2" className="relative py-12 sm:py-16 md:py-20 border-y border-white/[0.06] overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-10">
+      <div className="max-w-[var(--section-max-w)] mx-auto px-4 sm:px-6 mb-10">
         <div className="mb-4">
           <SectionMarker
             num="1.1"

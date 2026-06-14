@@ -46,6 +46,7 @@ export const MOCK_SOURCES: Source[] = [
         excerpt: 'This week: DeepMind\'s new alpha geometry system, the compute requirements for frontier models...',
         topics: ['AI models', 'AI policy', 'benchmarks'],
         word_count: 2800,
+        reading_time_minutes: 14,
       },
     ],
   },

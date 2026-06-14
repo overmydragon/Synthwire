@@ -46,6 +46,7 @@
 :root {
   --background: #0a090e;
   --foreground: #f8f7fb;
+  --section-max-w: 72rem;
   --font-geist-sans: "Geist", "Inter", system-ui, sans-serif;
   --font-geist-mono: "Geist Mono", monospace;
   --font-instrument-serif: "Instrument Serif", Georgia, serif;
@@ -69,6 +70,13 @@ html, body {
 body {
   position: relative;
   overflow-x: hidden;
+}
+
+/* Global section max-width centering */
+section {
+  max-width: var(--section-max-w);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Mobile scroll padding so anchor jumps land below the fixed nav */

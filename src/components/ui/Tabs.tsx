@@ -17,7 +17,7 @@ const useTabsContext = () => {
   return context;
 };
 
-interface TabsRootProps {
+export interface TabsRootProps {
   defaultValue: string;
   value?: string;
   onChange?: (value: string) => void;

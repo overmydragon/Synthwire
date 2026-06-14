@@ -1,7 +1,5 @@
 'use client';
 
-import { MOCK_SOURCES } from '@/lib/data/mock';
-
 export function FooterMarquee() {
   const word = 'Synthwire';
   const repeat = Array.from({ length: 20 });
@@ -12,16 +10,21 @@ export function FooterMarquee() {
         <div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-ink-950 to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-ink-950 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex animate-marquee-slow">
-          {repeat.map((_, i) => (
+        <div className="flex animate-marquee-slow will-change-transform gap-8 sm:gap-10 md:gap-12">
+          {repeat.flatMap((_, i) => [
             <span
-              key={i}
-              className="text-display text-[clamp(48px,10vw,160px)] text-ink-700/30 whitespace-nowrap px-4 sm:px-6 md:px-8 select-none"
+              key={`w-${i}`}
+              className="text-display text-[clamp(36px,8vw,120px)] text-ink-700/30 whitespace-nowrap select-none flex-shrink-0"
             >
               {word}
-              <span className="text-ink-800/30 mx-4 sm:mx-6 md:mx-8">·</span>
+            </span>,
+            <span
+              key={`d-${i}`}
+              className="text-display text-[clamp(36px,8vw,120px)] text-ink-800/30 whitespace-nowrap select-none flex-shrink-0"
+            >
+              ·
             </span>
-          ))}
+          ])}
         </div>
       </div>
     </section>

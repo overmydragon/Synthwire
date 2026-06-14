@@ -73,7 +73,7 @@ export default function Workspace() {
 
       {/* Tabs */}
       <div className="-mx-4 sm:mx-0 px-4 sm:px-0 mb-6 overflow-x-auto">
-        <Tabs defaultValue={activeTab} onChange={setActiveTab}>
+        <Tabs defaultValue={activeTab} onChange={(v) => setActiveTab(v as typeof activeTab)}>
           <Tabs.List className="flex-nowrap whitespace-nowrap w-max sm:w-auto">
             <Tabs.Trigger value="overview">
               <ShieldCheckIcon className="w-4 h-4" /> Overview
