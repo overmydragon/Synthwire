@@ -1,0 +1,49 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f0a1a"/>
+      <stop offset="50%" stop-color="#1a0f33"/>
+      <stop offset="100%" stop-color="#0f0a1a"/>
+    </linearGradient>
+    <linearGradient id="logoGrad" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="100%" stop-color="#9333EA"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1200" height="630" fill="url(#bgGrad)"/>
+  
+  <!-- Grid pattern -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(124,58,237,0.05)" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  
+  <!-- Accent circles -->
+  <circle cx="200" cy="150" r="180" fill="rgba(124,58,237,0.08)"/>
+  <circle cx="1000" cy="480" r="220" fill="rgba(147,51,234,0.06)"/>
+  
+  <!-- Logo -->
+  <g transform="translate(600, 180)">
+    <rect x="-60" y="-60" width="120" height="120" rx="24" fill="url(#logoGrad)"/>
+    <path d="M-30 0L-5 30L40 -20" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="600" y="360" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="300" fill="white">
+    Build a high-signal brief
+  </text>
+  <text x="600" y="420" text-anchor="middle" font-family="Georgia, serif" font-size="48" font-weight="500" fill="white">
+    on any topic
+  </text>
+  
+  <!-- Tagline -->
+  <text x="600" y="500" text-anchor="middle" font-family="system-ui, sans-serif" font-size="20" fill="rgba(196,181,253,0.9)">
+    Continuous discovery. Human controls. Source transparency.
+  </text>
+  
+  <!-- Brand -->
+  <text x="600" y="565" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" fill="rgba(167,139,250,0.7)">
+    Synthwire — Not another newsletter aggregator
+  </text>
+</svg>
