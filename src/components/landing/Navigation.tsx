@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@/components/ui';
+import { ThemeToggle } from '@/components/ui';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { useState } from 'react';
 
@@ -51,6 +52,7 @@ export function Navigation() {
 
           {/* Right side */}
           <div className="hidden md:flex items-center gap-2">
+            <ThemeToggle />
             <Link
               href="/login"
               className="text-[13px] font-medium text-ink-300 hover:text-white transition-colors px-3 py-1.5"
@@ -94,6 +96,8 @@ export function Navigation() {
               {link.label}
             </Link>
           ))}
+          <div className="my-2 h-px bg-white/[0.06]" />
+          <ThemeToggle className="w-full" />
           <div className="my-2 h-px bg-white/[0.06]" />
           <Link
             href="/login"

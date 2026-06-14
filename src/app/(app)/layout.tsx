@@ -14,7 +14,7 @@ import {
   BellIcon,
   Bars3Icon,
 } from '@heroicons/react/24/outline';
-import { Button, Avatar, Badge } from '@/components/ui';
+import { Button, Avatar, Badge, ThemeToggle } from '@/components/ui';
 import { MOCK_USER_PROFILE } from '@/lib/data/mock';
 
 const navigation = [
@@ -103,6 +103,7 @@ function SidebarContent({
 
       {/* User section */}
       <div className="p-4 border-t border-white/10">
+        <ThemeToggle className="w-full mb-4" />
         <div className="flex items-center gap-3 p-2 rounded-xl hover:bg-white/5 transition-colors">
           <Avatar size="md" fallback={MOCK_USER_PROFILE.user_id.slice(-2).toUpperCase()} />
           <div className="flex-1 min-w-0">
@@ -218,6 +219,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+            <ThemeToggle />
             <Button variant="ghost" size="sm" className="relative px-2 sm:px-3" aria-label="Notifications">
               <BellIcon className="w-5 h-5" />
               <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />

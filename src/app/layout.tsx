@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Instrument_Serif, Fraunces } from 'next/font/google'
 import './globals.css';
 import { Navigation } from '@/components/landing/Navigation';
 import { Footer } from '@/components/landing/Footer';
+import { ThemeProvider } from '@/lib/theme';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -84,10 +85,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-full flex flex-col bg-ink-950 text-white">
-        <Navigation />
-        <main className="flex-1 pt-16">{children}</main>
-        <Footer />
+      <body className="min-h-full flex flex-col">
+        <ThemeProvider>
+          <Navigation />
+          <main className="flex-1 pt-16">{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
