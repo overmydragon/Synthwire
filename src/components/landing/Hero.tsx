@@ -97,10 +97,7 @@ export function Hero() {
         </div>
 
         {/* Hero product UI */}
-        <div
-          className="relative max-w-5xl mx-auto px-2 sm:px-0 animate-slide-up overflow-hidden"
-          style={{ animationDelay: '520ms' }}
-        >
+        <div className="relative max-w-5xl mx-auto px-2 sm:px-0 animate-slide-up">
           <HeroDigestMock />
         </div>
       </div>
@@ -112,7 +109,6 @@ function HeroDigestMock() {
   return (
     <div
       className="relative"
-      style={{ transform: 'rotate(-0.5deg)', transformOrigin: 'center center' }}
     >
       {/* Violet glow behind the mockup — godlike depth */}
       <div
