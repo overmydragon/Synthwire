@@ -283,15 +283,9 @@ function SynthesisCard({ sources }: { sources: SourceCard[] }) {
 }
 
 /**
- * Static SVG overlay that draws 7 hairlines from the right edge of each
- * source row to the left edge of the synthesis card. The lines are computed
- * in a viewBox that matches the responsive grid — CSS handles scaling.
- *
- * Implementation note: we cannot measure DOM positions server-side, so we
- * draw a stylized "spokes on a wheel" that visually communicates the
- * convergence without depending on real coordinates. On desktop, the SVG
- * is positioned over the gap between the two columns. On mobile, it is
- * hidden because the columns stack.
+ * Simple visual connector — a subtle gradient band suggesting convergence
+ * without pretending to be exact point-to-point connections that would
+ * require client-side DOM measurement and break on responsive layouts.
  */
 function ConvergingArrows() {
   return (
@@ -306,88 +300,33 @@ function ConvergingArrows() {
         fill="none"
       >
         <defs>
-          <linearGradient id="converge-gradient" x1="0" y1="0" x2="1" y2="0">
+          <linearGradient id="converge-band" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0%" stopColor="#a78bfa" stopOpacity="0" />
-            <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.9" />
-          </linearGradient>
-          <linearGradient id="converge-glow" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#7c3aed" stopOpacity="0" />
-            <stop offset="100%" stopColor="#7c3aed" stopOpacity="0.4" />
+            <stop offset="50%" stopColor="#a78bfa" stopOpacity="0.12" />
+            <stop offset="100%" stopColor="#a78bfa" stopOpacity="0" />
           </linearGradient>
         </defs>
 
-        {/* 7 spokes converging from the left column toward a single point on the right */}
-        {/* Each spoke is a thin path with a gradient stroke and a small dot at the destination */}
-        {[
-          { y1: 60, y2: 480 },
-          { y1: 185, y2: 510 },
-          { y1: 310, y2: 530 },
-          { y1: 435, y2: 545 },
-          { y1: 560, y2: 560 },
-          { y1: 685, y2: 575 },
-          { y1: 810, y2: 590 },
-        ].map((spoke, i) => (
-          <g key={i}>
-            {/* Glow underlay */}
-            <path
-              d={`M 720 ${spoke.y1} Q 820 ${(spoke.y1 + spoke.y2) / 2} 920 ${spoke.y2}`}
-              stroke="url(#converge-glow)"
-              strokeWidth="6"
-              strokeLinecap="round"
-            />
-            {/* Hairline stroke */}
-            <path
-              d={`M 720 ${spoke.y1} Q 820 ${(spoke.y1 + spoke.y2) / 2} 920 ${spoke.y2}`}
-              stroke="url(#converge-gradient)"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeDasharray="0"
-            />
-            {/* Source endpoint dot (faint) */}
-            <circle
-              cx="720"
-              cy={spoke.y1}
-              r="2"
-              fill="#a78bfa"
-              opacity="0.55"
-            />
-          </g>
-        ))}
-
-        {/* Convergence target — violet ring with pulse */}
-        <circle
-          cx="920"
-          cy="535"
-          r="6"
+        {/* A clean diagonal band from left column area to right card area — no fake spokes */}
+        <path
+          d="M 650 150 Q 800 200 940 350 Q 800 500 650 850"
+          stroke="url(#converge-band)"
+          strokeWidth="120"
+          strokeLinecap="round"
           fill="none"
-          stroke="#a78bfa"
-          strokeWidth="1"
           opacity="0.6"
         />
-        <circle cx="920" cy="535" r="2.5" fill="#c4b5fd" />
-        <circle
-          cx="920"
-          cy="535"
-          r="10"
-          fill="none"
+
+        {/* Subtle hairline edge on the inner side */}
+        <path
+          d="M 820 350 Q 850 450 920 535"
           stroke="#a78bfa"
-          strokeWidth="0.6"
+          strokeWidth="1"
+          strokeLinecap="round"
+          fill="none"
           opacity="0.35"
-        >
-          <animate
-            attributeName="r"
-            values="6;18;6"
-            dur="3.2s"
-            repeatCount="indefinite"
-          />
-          <animate
-            attributeName="opacity"
-            values="0.5;0;0.5"
-            dur="3.2s"
-            repeatCount="indefinite"
-          />
-        </circle>
+          strokeDasharray="4 6"
+        />
       </svg>
     </div>
   );
