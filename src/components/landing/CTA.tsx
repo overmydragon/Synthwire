@@ -24,20 +24,22 @@ export function CTA() {
         </h2>
 
         <p className="text-lg text-ink-300 max-w-2xl mx-auto mb-12 leading-relaxed">
-          Private beta. Free while we&apos;re building. No credit card, no commitment, no AI crawling your inbox.
+          Free while we&apos;re building. No credit card, no commitment, no AI crawling your inbox.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16">
           <Link
             href="/app"
-            className="group inline-flex items-center gap-2 px-6 py-3.5 bg-white text-ink-950 text-[14px] font-medium rounded-full hover:bg-ink-100 transition-colors"
+            className="group inline-flex items-center gap-2 px-6 py-3.5 bg-white text-ink-950 text-[14px] font-medium rounded-full hover:bg-ink-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
+            aria-label="Browse the source directory and create your free account"
           >
             Browse the source directory
             <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
           </Link>
           <Link
             href="mailto:help@synthwire.email"
-            className="inline-flex items-center gap-2 px-6 py-3.5 text-ink-300 text-[14px] font-medium rounded-full hover:text-white border border-white/[0.12] hover:bg-white/[0.03] transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3.5 text-ink-300 text-[14px] font-medium rounded-full hover:text-white border border-white/[0.12] hover:bg-white/[0.03] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
+            aria-label="Contact the Synthwire team via email"
           >
             Talk to the team
           </Link>

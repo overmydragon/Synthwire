@@ -29,18 +29,14 @@ export function Hero() {
           <SectionMarker num="1.0" eyebrow="The product" />
         </div>
 
-        {/* Eyebrow chip — glass-morphism with green pulse */}
+        {/* Eyebrow chip — subtle status indicator */}
         <div
           className="flex justify-center mb-14 animate-slide-up"
           style={{ animationDelay: '120ms' }}
         >
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/[0.08] bg-white/[0.03] backdrop-blur-xl shadow-[inset_0_1px_0_0_rgba(255,255,255,0.04)]">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
-            </span>
             <span className="text-[11px] font-medium tracking-wide text-ink-200">
-              Private beta · 178 researchers joined this week
+              Now accepting new users
             </span>
           </div>
         </div>
@@ -75,24 +71,18 @@ export function Hero() {
           deduplicated brief — delivered where you want, on your schedule.
         </p>
 
-        {/* CTA — pill-shaped, white/black primary, outline secondary */}
+        {/* CTA — one primary, one ghost */}
         <div
           className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-16 sm:mb-24 animate-slide-up px-2"
           style={{ animationDelay: '400ms' }}
         >
           <Link
             href="/app"
-            className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-ink-950 text-[14px] font-medium rounded-full hover:bg-ink-100 transition-colors shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+            className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-ink-950 text-[14px] font-medium rounded-full hover:bg-ink-100 transition-colors shadow-[0_0_0_1px_rgba(255,255,255,0.08)] focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 focus-visible:ring-offset-ink-950"
+            aria-label="Browse the source directory and create your free account"
           >
             Browse the source directory
             <ArrowRightIcon className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-          <Link
-            href="#s-2"
-            className="w-full sm:w-auto group inline-flex items-center justify-center gap-2 px-6 py-3.5 text-ink-200 text-[14px] font-medium rounded-full hover:text-white border border-white/[0.1] hover:border-white/[0.2] hover:bg-white/[0.03] transition-colors"
-          >
-            <EnvelopeIcon className="w-4 h-4 text-ink-400 group-hover:text-ink-200 transition-colors" />
-            See how it works
           </Link>
         </div>
 

@@ -3,7 +3,6 @@ import { SourceMarquee } from '@/components/landing/SourceMarquee';
 import { HowItWorks } from '@/components/landing/HowItWorks';
 import { DemoSection } from '@/components/landing/DemoSection';
 import { Comparison } from '@/components/landing/Comparison';
-import { WhatWeBuildFor } from '@/components/landing/WhatWeBuildFor';
 import { ProofMetrics } from '@/components/landing/ProofMetrics';
 import { Features } from '@/components/landing/Features';
 import { Pricing } from '@/components/landing/Pricing';
@@ -21,7 +20,6 @@ export default function Home() {
       <HowItWorks />
       <DemoSection />
       <Comparison />
-      <WhatWeBuildFor />
       <ProofMetrics />
       <Features />
       <Pricing />

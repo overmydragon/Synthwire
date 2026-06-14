@@ -42,12 +42,13 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
   }, [open]);
 
   return (
-    <div className={`relative inline-block ${className}`} ref={dropdownRef}>
+    <div className={`relative inline-block ${className}`} ref={dropdownRef} data-theme-toggle>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] text-ink-300 transition-colors group"
+        className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.06] text-ink-300 transition-colors group theme-toggle"
         aria-expanded={open}
         aria-haspopup="listbox"
+        type="button"
       >
         {currentOption.icon}
         <span className="hidden sm:inline font-mono text-[11px] uppercase tracking-wider">{currentOption.label}</span>
@@ -55,7 +56,7 @@ export function ThemeToggle({ className = '' }: { className?: string }) {
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-xl bg-ink-900 border border-white/[0.08] shadow-2xl ring-1 ring-white/[0.05] overflow-hidden py-1 z-50 animate-slide-down">
+        <div className="absolute right-0 mt-2 w-56 origin-top-right rounded-xl bg-ink-900 border border-white/[0.08] shadow-2xl ring-1 ring-white/[0.05] overflow-hidden py-1 z-[101] animate-slide-down">
           <div className="px-3 py-2 border-b border-white/[0.06]">
             <p className="eyebrow text-ink-500 text-[10px]">Appearance</p>
           </div>
